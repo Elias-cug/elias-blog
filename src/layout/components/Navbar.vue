@@ -1,41 +1,128 @@
 <template>
   <header class="navbar">
-    <el-menu default-active="3" class="el-menu-demo" mode="horizontal">
-      <el-menu-item v-for="item in navItems" :key="item.id">
-        {{ item.text }}
-      </el-menu-item>
-    </el-menu>
+    <div class="logo">
+      manman
+    </div>
+
+    <div class="menu">
+      <el-menu
+        :default-active="activeMenu"
+        class="nav"
+        mode="horizontal"
+        :router="true"
+      >
+        <el-menu-item
+          v-for="route in routes"
+          :key="route.path"
+          :index="resolvePath(route.path, route.children[0].path)"
+        >
+          {{ route.children[0].meta.title }}
+        </el-menu-item>
+      </el-menu>
+    </div>
+
+    <div class="phone-menu">
+      <i class="el-icon-s-fold" />
+    </div>
+
+    <div class="login">
+      login
+    </div>
   </header>
 </template>
 
 <script>
+import path from 'path'
+import { isExternal } from '@/utils/validate.js'
 export default {
-  name: "Navbar",
+  name: 'Navbar',
   data() {
     return {
-      navItems: [
-        {
-          id: "B01",
-          text: "首页"
-        },
-        {
-          id: "B02",
-          text: "博客"
-        },
-        {
-          id: "B03",
-          text: "留言"
-        },
-        {
-          id: "B04",
-          text: "日记"
-        },
-        {
-          id: "B05",
-          text: "友链"
-        }
-      ]
-    };
+      basePath: ''
+    }
+  },
+  computed: {
+    activeMenu() {
+      const route = this.$route
+      const { path } = route
+      return path
+    },
+    routes() {
+      return this.$router.options.routes
+    }
+  },
+  methods: {
+    resolvePath(basePath, routePath) {
+      if (isExternal(routePath)) {
+        return routePath
+      }
+      if (isExternal(this.basePath)) {
+        return basePath
+      }
+      return path.resolve(basePath, routePath)
+    }
   }
-};
+}
 </script>
+
+<style lang="scss" scoped>
+.navbar {
+  margin: 0 auto;
+  position: relative;
+  width: 90%;
+  .logo {
+    font-family: BarbaraHand;
+    font-size: 30px;
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+  }
+  .menu {
+    position: absolute;
+    right: 25%;
+    .el-menu-item {
+      font-size: 15px;
+      padding:0 50px;
+    }
+  }
+  .phone-menu {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    font-size: 50px;
+  }
+  .login {
+    position: absolute;
+    right: 0;
+    height: 60px;
+    line-height: 60px;
+  }
+
+  @media screen and (min-width:1025px){
+    .menu {
+      display: block;
+    }
+    .phone-menu {
+      display: none;
+    }
+  }
+  @media screen and (max-width:1024px){
+    .menu {
+      display: none;
+    }
+    .phone-menu {
+      display: block;
+    }
+    .logo {
+      left: 25%;
+      width: 50%;
+    }
+    .login {
+      left: 0;
+    }
+  }
+}
+</style>

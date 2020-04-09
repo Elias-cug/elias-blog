@@ -1,32 +1,37 @@
 <template>
   <div class="app-wrapper">
-    <navbar class="navbar-container" />
-    <div class="main-container">
-      <app-main />
+    <div class="fixed-header">
+      <navbar />
     </div>
+    <app-main />
   </div>
 </template>
 
 <script>
-import { Navbar, AppMain } from "./components/index.js";
+import { Navbar, AppMain } from './components/index.js'
 export default {
-  name: "Layout",
+  name: 'Layout',
   components: {
     Navbar,
     AppMain
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-.navbar-container {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 100;
-}
-.main-container {
-  margin-top: 100px;
+@import "@/styles/mixin.scss";
+.app-wrapper {
+  @include clearfix;
+  position: relative;
+  .fixed-header {
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    width: 100%;
+    min-height: 60px;
+    border-bottom: 1px solid #e8e9e7 !important;
+  }
 }
 </style>

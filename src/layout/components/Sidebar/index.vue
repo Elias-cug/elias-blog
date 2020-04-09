@@ -10,32 +10,32 @@
 
 <script>
 export default {
-  name: "Sidebar",
+  name: 'Sidebar',
   data() {
     return {
       items: [
         {
-          id: "A01",
-          text: "全部文章"
+          id: 'A01',
+          text: '全部文章'
         },
         {
-          id: "A02",
-          text: "个人日记"
+          id: 'A02',
+          text: '个人日记'
         },
         {
-          id: "A03",
-          text: "javaScript"
+          id: 'A03',
+          text: 'javaScript'
         },
         {
-          id: "A04",
-          text: "Vue"
+          id: 'A04',
+          text: 'Vue'
         },
         {
-          id: "A05",
-          text: "其他"
+          id: 'A05',
+          text: '其他'
         }
       ]
-    };
+    }
   }
-};
+}
 </script>

@@ -1,63 +1,59 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Layout from "../layout/index.vue";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Layout from '../layout/index.vue'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     component: Layout,
-    children: [
-      {
-        path: "",
-        name: "Main",
-        component: () => import("@/views/main/index.vue")
-      }
-    ]
+    children: [{
+      path: '',
+      name: 'Main',
+      component: () => import('@/views/main/index.vue'),
+      meta: { title: '首页' }
+    }]
   },
-
   {
-    path: "/blog",
+    path: '/blog',
     component: Layout,
-    children: [
-      {
-        path: "index",
-        name: "Blog",
-        component: () => import("@/views/blog/index.vue")
-      }
-    ]
+    redirect: '/blog/index',
+    children: [{
+      path: 'index',
+      name: 'Blog',
+      component: () => import('@/views/blog/index.vue'),
+      meta: { title: '博客' }
+    }]
   },
-
   {
-    path: "/diary",
+    path: '/diary',
     component: Layout,
-    children: [
-      {
-        path: "index",
-        name: "Diary",
-        component: () => import("@/views/diary/index.vue")
-      }
-    ]
+    redirect: '/diary/index',
+    children: [{
+      path: 'index',
+      name: 'Diary',
+      component: () => import('@/views/diary/index.vue'),
+      meta: { title: '日记' }
+    }]
   },
-
   {
-    path: "/introduce",
+    path: '/introduce',
     component: Layout,
-    children: [
-      {
-        path: "index",
-        name: "Introduce",
-        component: () => import("@/views/introduce/index.vue")
-      }
-    ]
+    redirect: '/introduce/index',
+    children: [{
+      path: 'index',
+      name: 'Introduce',
+      component: () => import('@/views/introduce/index.vue'),
+      meta: { title: '关于' }
+    }]
   }
-];
+]
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
-});
+})
 
-export default router;
+export default router
