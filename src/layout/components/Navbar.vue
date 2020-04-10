@@ -1,8 +1,8 @@
 <template>
   <header class="navbar">
-    <div class="logo">
-      manman
-    </div>
+    <a class="logo">
+      keep
+    </a>
 
     <div class="menu">
       <el-menu
@@ -22,11 +22,11 @@
     </div>
 
     <div class="phone-menu">
-      <i class="el-icon-s-fold" />
+      <svg-icon icon-class="nav" />
     </div>
 
     <div class="login">
-      login
+      <svg-icon icon-class="login" />
     </div>
   </header>
 </template>
@@ -90,17 +90,26 @@ export default {
   }
   .phone-menu {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 0;
-    font-size: 50px;
+    font-size: 40px;
   }
   .login {
     position: absolute;
+    top: 10px;
     right: 0;
-    height: 60px;
-    line-height: 60px;
+    font-size: 40px;
   }
-
+  .login .svg-icon:hover {
+    background-color: rgb(255, 255, 255);
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  .phone-menu .svg-icon:hover {
+    background-color: rgb(255, 255, 255);
+    opacity: 0.6;
+    cursor: pointer;
+  }
   @media screen and (min-width:1025px){
     .menu {
       display: block;
@@ -122,6 +131,7 @@ export default {
     }
     .login {
       left: 0;
+      width: 25%;
     }
   }
 }

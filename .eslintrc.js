@@ -5,26 +5,26 @@ module.exports = {
     es6: true,
     browser: true
   },
-  extends: ["plugin:vue/recommended", "eslint:recommended"],
+  extends: ['plugin:vue/recommended', 'eslint:recommended'],
   parserOptions: {
-    parser: "babel-eslint"
+    parser: 'babel-eslint'
   },
   rules: {
     // 限制属性个数
-    "vue/max-attributes-per-line": [0, {
-      "singleline": 10,  // 单行限制属性
-      "multiline": {     // 多行限制属性
-        "max": 1,
-        "allowFirstLine": false  // 多行时不允许标签行有属性
+    'vue/max-attributes-per-line': [0, {
+      'singleline': 10, // 单行限制属性
+      'multiline': { // 多行限制属性
+        'max': 1,
+        'allowFirstLine': false // 多行时不允许标签行有属性
       }
     }],
 
     // html标签可否在同一行
-    "vue/singleline-html-element-content-newline": "off",
-    "vue/multiline-html-element-content-newline":"off",
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/multiline-html-element-content-newline': 'off',
     // 主键名字属性
-    "vue/component-definition-name-casing": ["error", "PascalCase"],
-    "vue/no-v-html": "off",
+    'vue/component-definition-name-casing': ['error', 'PascalCase'],
+    'vue/no-v-html': 'off',
     'accessor-pairs': 2,
     'arrow-spacing': [2, {
       'before': true,
@@ -47,7 +47,7 @@ module.exports = {
     'curly': [2, 'multi-line'],
     'dot-location': [2, 'property'],
     'eol-last': 2,
-    'eqeqeq': ["error", "always", {"null": "ignore"}],
+    'eqeqeq': ['error', 'always', { 'null': 'ignore' }],
     'generator-star-spacing': [2, {
       'before': true,
       'after': true
@@ -197,4 +197,4 @@ module.exports = {
     }],
     'array-bracket-spacing': [2, 'never']
   }
-};
+}
