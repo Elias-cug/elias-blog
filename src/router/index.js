@@ -6,21 +6,21 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/main',
     component: Layout,
+    redirect: '/main/index.vue',
     children: [{
-      path: '',
+      path: 'main',
       name: 'Main',
       component: () => import('@/views/main/index.vue'),
       meta: { title: '首页' }
     }]
   },
   {
-    path: '/blog',
+    path: '/',
     component: Layout,
-    redirect: '/blog/index',
     children: [{
-      path: 'index',
+      path: '',
       name: 'Blog',
       component: () => import('@/views/blog/index.vue'),
       meta: { title: '博客' }

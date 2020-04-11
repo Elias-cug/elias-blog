@@ -23,6 +23,9 @@ export default {
 .app-wrapper {
   @include clearfix;
   position: relative;
+  background-image: url("~@/assets/img/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   .fixed-header {
     background-color: #fff;
     position: fixed;
