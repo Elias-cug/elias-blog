@@ -1,25 +1,25 @@
 <template>
   <div>
     <div v-for="list in lists" :key="list.id" class="article-list">
-      <div v-if="list.isTop" class="top-article">置顶</div>
+      <div v-if="list.is_top" class="top-article">置顶</div>
       <h5 class="title-info">
-        <span class="source">【{{ list.source }}】</span>
+        <span v-if="list.is_original" class="source">【原创】</span>
         <a class="title">{{ list.title }}</a>
       </h5>
       <div class="date">
-        <span class="day">2</span>
-        <span class="month">2月</span>
-        <span class="year">2020</span>
+        <span class="day">{{ list.add_time.substring(6, 8) }}</span>
+        <span class="month">{{ list.add_time.substring(4, 6) }}月</span>
+        <span class="year">{{ list.add_time.substring(0, 4) }}</span>
       </div>
       <div class="article-content">
-        <img :src="list.imgSrc">
-        <span>
-          {{ list.content }}
-        </span>
+        <router-link to="/reading/index" class="cover">
+          <img :src="list.image_src">
+        </router-link>
+        <p>{{ list.desc }}</p>
       </div>
       <div class="article-foot">
         <div class="read-more">
-          <a> 继续阅读 </a>
+          <router-link to="/reading/index"> 继续阅读 </router-link>
         </div>
         <div class="tag">
           <svg-icon icon-class="tag" />
@@ -42,36 +42,31 @@
 
 <script>
 import path from 'path'
+import { findArticle } from '@/api/blog/article.js'
 export default {
   name: 'ArticleList',
   data() {
     return {
-      lists: [{
-        id: '01',
-        isTop: true,
-        imgSrc: 'https://img.shields.io/badge/vue-2.6.10-brightgreen.svg',
-        title: '模板分享',
-        time: '20190102',
-        source: '原创',
-        description: '描述',
-        content: '内容',
-        category: '个人日记'
-      }, {
-        id: '02',
-        isTop: false,
-        imgSrc: 'https://img.shields.io/badge/vue-2.6.10-brightgreen.svg',
-        title: '模板分享',
-        time: '20190102',
-        source: '原创',
-        description: '描述',
-        content: '内容',
-        category: '个人日记'
-      }]
+      lists: []
     }
+  },
+  mounted() {
+    this.findArticle()
   },
   methods: {
     resolvePath(routePath) {
       return path.resolve(routePath)
+    },
+    findArticle(options) {
+      return new Promise((resolve, reject) => {
+        findArticle({}).then((response) => {
+          this.lists = response
+          console.log(this.lists)
+          resolve()
+        }).catch(err => {
+          reject(err)
+        })
+      })
     }
   }
 }
@@ -144,14 +139,19 @@ export default {
     line-height: 28px;
     position: relative;
     min-height: 200px;
-    img {
+    line-height: 28px;
+    .cover {
       display: block;
       width: 300px;
       height: 180px;
       border: 1px solid #e8e9e7;
       overflow: hidden;
-      float: left;
       margin-right: 20px;
+      float: left;
+      img {
+        width: 100%!important;
+        height: 100%!important;
+      }
     }
     @media screen and (max-width: 500px) {
       img {

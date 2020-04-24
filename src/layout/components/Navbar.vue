@@ -48,7 +48,10 @@ export default {
       return path
     },
     routes() {
-      return this.$router.options.routes
+      const routes = this.$router.options.routes
+      return routes.filter((item) => {
+        return item.children[0].meta.isTag
+      })
     }
   },
   methods: {

@@ -13,7 +13,7 @@ const routes = [
       path: 'main',
       name: 'Main',
       component: () => import('@/views/main/index.vue'),
-      meta: { title: '首页' }
+      meta: { title: '首页', isTag: true }
     }]
   },
   {
@@ -23,7 +23,7 @@ const routes = [
       path: '',
       name: 'Blog',
       component: () => import('@/views/blog/index.vue'),
-      meta: { title: '博客' }
+      meta: { title: '博客', isTag: true }
     }]
   },
   {
@@ -34,7 +34,7 @@ const routes = [
       path: 'index',
       name: 'Diary',
       component: () => import('@/views/diary/index.vue'),
-      meta: { title: '日记' }
+      meta: { title: '日记', isTag: true }
     }]
   },
   {
@@ -45,7 +45,18 @@ const routes = [
       path: 'index',
       name: 'Introduce',
       component: () => import('@/views/introduce/index.vue'),
-      meta: { title: '关于' }
+      meta: { title: '关于', isTag: true }
+    }]
+  },
+  {
+    path: '/reading',
+    component: Layout,
+    redirect: '/reading/index',
+    children: [{
+      path: 'index',
+      name: 'Reading',
+      component: () => import('@/views/reading/index.vue'),
+      meta: { title: '阅读', isTag: false }
     }]
   }
 ]

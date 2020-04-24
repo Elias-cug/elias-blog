@@ -9,37 +9,35 @@
       </label>
     </div>
     <ul class="category-wrapper">
-      <li v-for="category in categories" :key="category.id" class="category-list">
-        <a>{{ category.text }}</a>
+      <li v-for="category in categories" :key="category.cate_id" class="category-list">
+        <a>{{ category.cate_name }}</a>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { findCategory } from '@/api/blog/category.js'
 export default {
   name: 'Category',
   data() {
     return {
-      categories: [{
-        id: 'A00',
-        text: '全部文章'
-      }, {
-        id: 'A01',
-        text: 'JavaScript'
-      }, {
-        id: 'A02',
-        text: 'Vue'
-      }, {
-        id: 'A03',
-        text: 'webpack'
-      }, {
-        id: 'A04',
-        text: 'Html&css'
-      }, {
-        id: 'A05',
-        text: '其他'
-      }]
+      categories: []
+    }
+  },
+  mounted() {
+    this.findCategory({})
+  },
+  methods: {
+    findCategory(options) {
+      return new Promise((resolve, reject) => {
+        findCategory({}).then((response) => {
+          this.categories = response
+          resolve()
+        }).catch(err => {
+          reject(err)
+        })
+      })
     }
   }
 }
