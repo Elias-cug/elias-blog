@@ -140,23 +140,30 @@ export default {
     position: relative;
     min-height: 200px;
     line-height: 28px;
+    p {
+      word-break:break-all
+    }
     .cover {
       display: block;
       width: 300px;
       height: 180px;
-      border: 1px solid #e8e9e7;
       overflow: hidden;
       margin-right: 20px;
       float: left;
       img {
-        width: 100%!important;
-        height: 100%!important;
+        width: 100%;
+        height: 100%;
       }
     }
     @media screen and (max-width: 500px) {
-      img {
+      .cover {
         width: 100%;
         height: auto;
+        float: none;
+        img {
+          width: 100% !important;
+          width: 100% !important;
+        }
       }
     }
   }

@@ -3,10 +3,8 @@
     <div class="article-wrapper">
       <article-list />
     </div>
-    <div class="side-wrapper">
-      <category />
-      <hot-sort />
-    </div>
+    <category />
+    <hot-sort />
   </div>
 </template>
 
@@ -30,19 +28,9 @@ export default {
   position: relative;
   .article-wrapper {
     float: left;
-    width: calc(100% - 300px - 30px);
-  }
-  .side-wrapper {
-    display: block;
-    margin-left: 20px;
-    float: left;
-    width: 300px;
+    width: calc(100% - 300px - 20px);
   }
   @media screen and (max-width: 900px) {
-    .side-wrapper {
-      display: none;
-      float: none;
-    }
     .article-wrapper {
       width: 100%;
       float: none;

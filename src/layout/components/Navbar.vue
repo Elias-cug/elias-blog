@@ -21,8 +21,25 @@
       </el-menu>
     </div>
 
-    <div class="phone-menu">
-      <svg-icon icon-class="nav" />
+    <div class="phone-menu-icon">
+      <!-- 直接在methods里面写click会编译不到 -->
+      <svg-icon icon-class="nav" @click="isPhone = isPhone === false" />
+    </div>
+
+    <div v-if="isPhone" class="phone-menu">
+      <el-menu
+        :default-active="activeMenu"
+        class="nav"
+        :router="true"
+      >
+        <el-menu-item
+          v-for="route in routes"
+          :key="route.path"
+          :index="resolvePath(route.path, route.children[0].path)"
+        >
+          {{ route.children[0].meta.title }}
+        </el-menu-item>
+      </el-menu>
     </div>
 
     <div class="login">
@@ -38,7 +55,8 @@ export default {
   name: 'Navbar',
   data() {
     return {
-      basePath: ''
+      basePath: '',
+      isPhone: false
     }
   },
   computed: {
@@ -91,11 +109,23 @@ export default {
       padding:0 50px;
     }
   }
-  .phone-menu {
+  .phone-menu-icon {
     position: absolute;
     top: 10px;
     right: 0;
     font-size: 40px;
+  }
+  .phone-menu {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+    border-top: 1px solid rgb(219, 216, 216);
+    z-index: 9;
   }
   .login {
     position: absolute;
@@ -108,7 +138,7 @@ export default {
     opacity: 0.6;
     cursor: pointer;
   }
-  .phone-menu .svg-icon:hover {
+  .phone-menu-icon .svg-icon:hover {
     background-color: rgb(255, 255, 255);
     opacity: 0.6;
     cursor: pointer;
@@ -117,7 +147,10 @@ export default {
     .menu {
       display: block;
     }
-    .phone-menu {
+    .phone-menu{
+      display: none;
+    }
+    .phone-menu-icon {
       display: none;
     }
   }
@@ -125,7 +158,7 @@ export default {
     .menu {
       display: none;
     }
-    .phone-menu {
+    .phone-menu-icon {
       display: block;
     }
     .logo {

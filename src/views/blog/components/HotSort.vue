@@ -41,6 +41,10 @@ export default {
 .hot-sort {
   background-color: #fff;
   margin-top: 20px;
+  display: block;
+  box-sizing: content-box;
+  float: right;
+  width: 300px;
   .title {
     margin: 10px 20px;
     padding: 5px;
@@ -85,6 +89,11 @@ export default {
       border-radius: 100%;
       background-color: #edefee;
     }
+  }
+}
+@media screen and (max-width: 900px) {
+  .hot-sort {
+    display: none;
   }
 }
 </style>
