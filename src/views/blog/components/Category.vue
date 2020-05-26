@@ -10,8 +10,8 @@
         </label>
       </div>
       <ul class="category-wrapper">
-        <li v-for="category in categories" :key="category.cate_id" class="category-list">
-          <a>{{ category.cate_name }}</a>
+        <li v-for="category in categories" :key="category._id" class="category-list">
+          <a>{{ category.name }}</a>
         </li>
       </ul>
     </div>
@@ -23,7 +23,7 @@
       <div v-if="isOpen" class="mask" @click="isOpen=false" />
       <div v-if="isOpen" class="phone-sidemenu" @click="isOpen=false">
         <span>分类导航</span>
-        <a v-for="category in categories" :key="category.cate_id" class="category-list">{{ category.cate_name }}</a>
+        <a v-for="category in categories" :key="category._id" class="category-list">{{ category.name }}</a>
       </div>
     </div>
   </div>
@@ -63,8 +63,6 @@ export default {
     background-color: #fff;
     display: block;
     box-sizing: content-box;
-    float: right;
-    width: 300px;
     .search {
       background-color: grey;
       padding: 20px;

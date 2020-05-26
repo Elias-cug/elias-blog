@@ -62,7 +62,11 @@ export default {
   computed: {
     activeMenu() {
       const route = this.$route
-      const { path } = route
+      const { path, params } = route
+      if (params.id) {
+        const id = params.id
+        return path.substring(0, path.indexOf('/' + id))
+      }
       return path
     },
     routes() {

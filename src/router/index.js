@@ -6,21 +6,20 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/main',
+    path: '/',
     component: Layout,
-    redirect: '/main/index.vue',
     children: [{
-      path: 'main',
+      path: '',
       name: 'Main',
       component: () => import('@/views/main/index.vue'),
       meta: { title: '首页', isTag: true }
     }]
   },
   {
-    path: '/',
+    path: '/blog',
     component: Layout,
     children: [{
-      path: '',
+      path: 'index',
       name: 'Blog',
       component: () => import('@/views/blog/index.vue'),
       meta: { title: '博客', isTag: true }
@@ -49,11 +48,11 @@ const routes = [
     }]
   },
   {
-    path: '/reading',
+    path: '/blog',
     component: Layout,
     redirect: '/reading/index',
     children: [{
-      path: 'index',
+      path: 'index/:id',
       name: 'Reading',
       component: () => import('@/views/reading/index.vue'),
       meta: { title: '阅读', isTag: false }

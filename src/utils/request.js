@@ -8,8 +8,10 @@ const service = axios.create({
 })
 
 service.interceptors.request.use(
-  config => {
-    return config
+  request => {
+    console.log('========' + request.url + '请求参数==================')
+    console.log(request.data)
+    return request
   },
   error => {
     console.log(error) // for debug
@@ -20,7 +22,17 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => {
     const res = response.data
-    return res
+    if (res.code !== 20000) {
+      Message({
+        message: res.msg || 'Error',
+        type: 'error',
+        duration: 5 * 1000
+      })
+      return Promise.reject(new Error(res.message || 'Error'))
+    }
+    console.log('========' + response.config.url + '返回参数==================')
+    console.log(res)
+    return res.data
   },
   error => {
     console.log('err' + error) // for debug

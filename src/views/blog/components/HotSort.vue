@@ -25,12 +25,6 @@ export default {
       }, {
         id: '03',
         title: 'js学习'
-      }, {
-        id: '04',
-        title: 'js学习'
-      }, {
-        id: '05',
-        title: 'js学习'
       }]
     }
   }
@@ -43,8 +37,6 @@ export default {
   margin-top: 20px;
   display: block;
   box-sizing: content-box;
-  float: right;
-  width: 300px;
   .title {
     margin: 10px 20px;
     padding: 5px;

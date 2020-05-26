@@ -3,8 +3,10 @@
     <div class="article-wrapper">
       <article-list />
     </div>
-    <category />
-    <hot-sort />
+    <div class="side">
+      <category />
+      <hot-sort />
+    </div>
   </div>
 </template>
 
@@ -17,6 +19,11 @@ export default {
     ArticleList,
     Category,
     HotSort
+  },
+  data() {
+    return {
+      isDetail: false
+    }
   }
 }
 </script>
@@ -29,6 +36,10 @@ export default {
   .article-wrapper {
     float: left;
     width: calc(100% - 300px - 20px);
+  }
+  .side {
+    width: 300px;
+    float: right;
   }
   @media screen and (max-width: 900px) {
     .article-wrapper {

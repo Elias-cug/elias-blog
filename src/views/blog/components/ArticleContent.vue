@@ -2,13 +2,13 @@
   <div class="reading">
     <div class="article-info">
       <h2>
-        {{ articleInfo.title }}
+        模板分享
       </h2>
       <span class="info-item">
-        作者：liyisheng
+        作者: liyisheng
       </span>
       <span class="info-item">
-        更新时间：{{ articleInfo.update_time }}
+        更新时间: 20200526
       </span>
       <span class="info-item">
         点击量: 102
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="article-content">
-      {{ articleInfo.content }}
+      content
     </div>
     <div class="article-state">
       文章说明
@@ -29,34 +29,20 @@
 </template>
 
 <script>
-import { findArticle } from '@/api/blog/article.js'
+
 export default {
-  name: 'Reading',
   data() {
     return {
-      articleInfo: {}
+
     }
   },
-  created() {
-    const _id = this.$route.params.id
-    this.getArticle({ _id: _id })
-  },
+  computed: {},
   methods: {
-    getArticle(data) {
-      return new Promise((resolve, reject) => {
-        findArticle(data).then((response) => {
-          this.articleInfo = response[0]
-          resolve()
-        }).catch(err => {
-          reject(err)
-        })
-      })
-    }
+
   }
 }
 </script>
-
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 .reading {
   padding: 30px;
   background-color: #fff;

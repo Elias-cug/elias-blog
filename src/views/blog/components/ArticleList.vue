@@ -1,25 +1,26 @@
 <template>
   <div>
-    <div v-for="list in lists" :key="list.id" class="article-list">
+    <div v-for="list in lists" :key="list._id" class="article-list">
       <div v-if="list.is_top" class="top-article">置顶</div>
       <h5 class="title-info">
-        <span v-if="list.is_original" class="source">【原创】</span>
+        <span class="source">【{{ list.source }}】</span>
         <a class="title">{{ list.title }}</a>
       </h5>
       <div class="date">
-        <span class="day">{{ list.add_time.substring(6, 8) }}</span>
-        <span class="month">{{ list.add_time.substring(4, 6) }}月</span>
-        <span class="year">{{ list.add_time.substring(0, 4) }}</span>
+        <span class="day">{{ list.add_time | parseTime('{d}') }}</span>
+        <span class="month">{{ list.add_time | parseTime('{m}') }}月</span>
+        <span class="year">{{ list.add_time | parseTime('{y}') }}</span>
       </div>
       <div class="article-content">
-        <router-link to="/reading/index" class="cover">
+        <span class="cover" @click="continueReading(list._id)">
           <img :src="list.image_src">
-        </router-link>
+        </span>
         <p>{{ list.desc }}</p>
       </div>
       <div class="article-foot">
         <div class="read-more">
-          <router-link to="/reading/index"> 继续阅读 </router-link>
+          <!-- <router-link to="/blog/index/1"> 继续阅读 </router-link> -->
+          <span @click="continueReading(list._id)"> 继续阅读 </span>
         </div>
         <div class="tag">
           <svg-icon icon-class="tag" />
@@ -42,9 +43,15 @@
 
 <script>
 import path from 'path'
+import { parseTime } from '@/utils/index.js'
 import { findArticle } from '@/api/blog/article.js'
 export default {
   name: 'ArticleList',
+  filters: {
+    parseTime(time, cFormat) {
+      return parseTime(time, cFormat)
+    }
+  },
   data() {
     return {
       lists: []
@@ -61,12 +68,15 @@ export default {
       return new Promise((resolve, reject) => {
         findArticle({}).then((response) => {
           this.lists = response
-          console.log(this.lists)
           resolve()
         }).catch(err => {
           reject(err)
         })
       })
+    },
+    continueReading(id) {
+      const path = `/blog/index/${id}`
+      if (this.$route.path !== path) this.$router.push(path)
     }
   }
 }
