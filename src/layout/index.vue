@@ -4,16 +4,19 @@
       <navbar />
     </div>
     <app-main />
+    <blog-footer />
   </div>
 </template>
 
 <script>
+import BlogFooter from '@/components/BlogFooter/index.vue'
 import { Navbar, AppMain } from './components/index.js'
 export default {
   name: 'Layout',
   components: {
     Navbar,
-    AppMain
+    AppMain,
+    BlogFooter
   }
 }
 </script>

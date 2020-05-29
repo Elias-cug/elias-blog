@@ -8,7 +8,7 @@
         作者：liyisheng
       </span>
       <span class="info-item">
-        更新时间：{{ articleInfo.update_time }}
+        更新时间：{{ articleInfo.update_time | parseTime() }}
       </span>
       <span class="info-item">
         点击量: 102
@@ -23,15 +23,31 @@
       {{ articleInfo.content }}
     </div>
     <div class="article-state">
-      文章说明
+      <span>
+        非特殊说明，本文版权归 李义升 所有，转载请注明出处.
+      </span>
+      <span>
+        本文作者：
+        <a href="#">liyisheng</a>
+      </span>
+      <span>
+        本文网址：
+        <a href="#">http://localhost:8080/blog/index/5ea6ce23c5752c2a1848882b</a>
+      </span>
     </div>
   </div>
 </template>
 
 <script>
+import { parseTime } from '@/utils/index.js'
 import { findArticle } from '@/api/blog/article.js'
 export default {
   name: 'Reading',
+  filters: {
+    parseTime(time, cFormat) {
+      return parseTime(time, cFormat)
+    }
+  },
   data() {
     return {
       articleInfo: {}
@@ -62,7 +78,7 @@ export default {
   background-color: #fff;
   width: 90%;
   height: auto;
-  margin: 0 auto;
+  margin: 20px auto;
   .article-info {
     position: relative;
     width: 100%;
@@ -110,6 +126,13 @@ export default {
     font-size: 13px;
     padding: 20px;
     background-color: #f8f9f7;
+    span {
+      display: block;
+      margin-bottom: 5px;
+    }
+    :last-child {
+      margin: 0;
+    }
   }
 }
 </style>

@@ -12,12 +12,12 @@ export default {
 
 <style lang="scss" scoped>
 .app-main {
-  min-height: calc(100vh - 60px);
+  min-height: 100vh;
   width: 100%;
   position: relative;
   overflow: hidden;
 }
 .fixed-header+.app-main {
-  padding-top: 80px;
+  padding-top: 60px;
 }
 </style>

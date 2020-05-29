@@ -31,7 +31,7 @@ export default {
 <style lang="scss" scoped>
 .blog-wrapper {
   width: 90%;
-  margin: 0 auto;
+  margin: 20px auto;
   position: relative;
   .article-wrapper {
     float: left;

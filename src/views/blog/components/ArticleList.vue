@@ -24,7 +24,7 @@
         </div>
         <div class="tag">
           <svg-icon icon-class="tag" />
-          <span>{{ list.category }}</span>
+          <span>{{ list.cid }}</span>
         </div>
         <div class="reading-info">
           <span class="click-num">
@@ -160,6 +160,7 @@ export default {
       overflow: hidden;
       margin-right: 20px;
       float: left;
+      cursor: pointer;
       img {
         width: 100%;
         height: 100%;
@@ -180,19 +181,25 @@ export default {
   .article-foot {
     position: relative;
     height: 40px;
-    a {
-      line-height: 40px;
-      font-weight: bold;
-    }
-    .read-more a:before {
-      content: " ";
-      display: inline-block;
-      height: 1px;
-      top: 20px;
-      left: 100px;
-      right: 0;
-      position: absolute;
-      background-color: #d0d0d0;
+    .read-more {
+      span {
+        cursor: pointer;
+        line-height: 40px;
+        font-weight: bold;
+      }
+      span:hover {
+        color: aqua;
+      }
+      span:before {
+        content: " ";
+        display: inline-block;
+        height: 1px;
+        top: 20px;
+        left: 100px;
+        right: 0;
+        position: absolute;
+        background-color: #d0d0d0;
+      }
     }
     .tag {
       float: left;
