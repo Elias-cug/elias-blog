@@ -1,9 +1,11 @@
 <template>
   <div class="blog-footer">
-    <div>
-      dsfjlskdjf
+    <div class="link">
+      <span>QQ</span>
+      <span>邮箱</span>
+      <span>github</span>
     </div>
-    <div>
+    <div class="approve">
       Copyright © 2018-2020 燕十三 All Rights Reserved V.1.0.0 备案号:蜀ICP备18008600号
     </div>
   </div>
@@ -27,5 +29,16 @@ export default {
   line-height: 20px;
   margin-top: 40px;
   overflow: hidden;
+  .link{
+    text-align: center;
+    margin-bottom: 20px;
+    span{
+      padding: 0 10px;
+    }
+  }
+  .approve{
+    text-align: center;
+    margin-bottom: 10px;
+  }
 }
 </style>
