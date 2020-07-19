@@ -3,6 +3,10 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
+  devServer: {
+    // 项目运行时候的端口号
+    port: 9080
+  },
   configureWebpack: (config) => {
     Object.assign(config, {
       resolve: {
