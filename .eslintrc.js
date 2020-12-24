@@ -23,7 +23,7 @@ module.exports = {
     'spaced-comment': 'warn',
     'no-undef': 'warn',
     'no-unused-vars': 'warn',
-    'standard/no-callback-literal': [1, ['cb', 'callback']],
+    'standard/no-callback-literal': 0,
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   }
 }
