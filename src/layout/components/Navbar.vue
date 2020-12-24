@@ -27,11 +27,7 @@
     </div>
 
     <div v-if="isPhone" class="phone-menu">
-      <el-menu
-        :default-active="activeMenu"
-        class="nav"
-        :router="true"
-      >
+      <el-menu :default-active="activeMenu" class="nav" :router="true">
         <el-menu-item
           v-for="route in routes"
           :key="route.path"
@@ -53,14 +49,14 @@ import path from 'path'
 import { isExternal } from '@/utils/validate.js'
 export default {
   name: 'Navbar',
-  data() {
+  data () {
     return {
       basePath: '',
       isPhone: false
     }
   },
   computed: {
-    activeMenu() {
+    activeMenu () {
       const route = this.$route
       const { path, params } = route
       if (params.id) {
@@ -69,15 +65,15 @@ export default {
       }
       return path
     },
-    routes() {
+    routes () {
       const routes = this.$router.options.routes
-      return routes.filter((item) => {
+      return routes.filter(item => {
         return item.children[0].meta.isTag
       })
     }
   },
   methods: {
-    resolvePath(basePath, routePath) {
+    resolvePath (basePath, routePath) {
       if (isExternal(routePath)) {
         return routePath
       }
@@ -110,7 +106,7 @@ export default {
     right: 25%;
     .el-menu-item {
       font-size: 15px;
-      padding:0 50px;
+      padding: 0 50px;
     }
   }
   .phone-menu-icon {
@@ -147,18 +143,18 @@ export default {
     opacity: 0.6;
     cursor: pointer;
   }
-  @media screen and (min-width:1025px){
+  @media screen and (min-width: 1025px) {
     .menu {
       display: block;
     }
-    .phone-menu{
+    .phone-menu {
       display: none;
     }
     .phone-menu-icon {
       display: none;
     }
   }
-  @media screen and (max-width:1024px){
+  @media screen and (max-width: 1024px) {
     .menu {
       display: none;
     }

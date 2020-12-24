@@ -3,27 +3,36 @@
     <div class="pc-side">
       <div class="search">
         <label class="search-wrapper">
-          <input type="text" placeholder="输入关键字搜索">
+          <input type="text" placeholder="输入关键字搜索" />
           <span class="search-icon">
             <svg-icon icon-class="search" />
           </span>
         </label>
       </div>
       <ul class="category-wrapper">
-        <li v-for="category in categories" :key="category._id" class="category-list">
+        <li
+          v-for="category in categories"
+          :key="category._id"
+          class="category-list"
+        >
           <a>{{ category.name }}</a>
         </li>
       </ul>
     </div>
 
     <div class="phone-side">
-      <div v-if="!isOpen" class="side-button" @click="isOpen=true">
+      <div v-if="!isOpen" class="side-button" @click="isOpen = true">
         <svg-icon icon-class="triangle" />
       </div>
-      <div v-if="isOpen" class="mask" @click="isOpen=false" />
-      <div v-if="isOpen" class="phone-sidemenu" @click="isOpen=false">
+      <div v-if="isOpen" class="mask" @click="isOpen = false" />
+      <div v-if="isOpen" class="phone-sidemenu" @click="isOpen = false">
         <span>分类导航</span>
-        <a v-for="category in categories" :key="category._id" class="category-list">{{ category.name }}</a>
+        <a
+          v-for="category in categories"
+          :key="category._id"
+          class="category-list"
+          >{{ category.name }}</a
+        >
       </div>
     </div>
   </div>
@@ -33,24 +42,26 @@
 import { findCategory } from '@/api/blog/category.js'
 export default {
   name: 'Category',
-  data() {
+  data () {
     return {
       categories: [],
       isOpen: false
     }
   },
-  mounted() {
+  mounted () {
     this.findCategory({})
   },
   methods: {
-    findCategory(options) {
+    findCategory (options) {
       return new Promise((resolve, reject) => {
-        findCategory({}).then((response) => {
-          this.categories = response
-          resolve()
-        }).catch(err => {
-          reject(err)
-        })
+        findCategory({})
+          .then(response => {
+            this.categories = response
+            resolve()
+          })
+          .catch(err => {
+            reject(err)
+          })
       })
     }
   }
@@ -151,7 +162,7 @@ export default {
       right: 0;
       top: 60px;
       bottom: 0;
-      background: rgba(0,0,0,.7);
+      background: rgba(0, 0, 0, 0.7);
       z-index: 8;
     }
     .phone-sidemenu {

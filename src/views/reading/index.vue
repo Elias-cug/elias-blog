@@ -32,7 +32,9 @@
       </span>
       <span>
         本文网址：
-        <a href="#">http://localhost:8080/blog/index/5ea6ce23c5752c2a1848882b</a>
+        <a href="#"
+          >http://localhost:8080/blog/index/5ea6ce23c5752c2a1848882b</a
+        >
       </span>
     </div>
   </div>
@@ -44,28 +46,30 @@ import { findArticle } from '@/api/blog/article.js'
 export default {
   name: 'Reading',
   filters: {
-    parseTime(time, cFormat) {
+    parseTime (time, cFormat) {
       return parseTime(time, cFormat)
     }
   },
-  data() {
+  data () {
     return {
       articleInfo: {}
     }
   },
-  created() {
+  created () {
     const _id = this.$route.params.id
     this.getArticle({ _id: _id })
   },
   methods: {
-    getArticle(data) {
+    getArticle (data) {
       return new Promise((resolve, reject) => {
-        findArticle(data).then((response) => {
-          this.articleInfo = response[0]
-          resolve()
-        }).catch(err => {
-          reject(err)
-        })
+        findArticle(data)
+          .then(response => {
+            this.articleInfo = response[0]
+            resolve()
+          })
+          .catch(err => {
+            reject(err)
+          })
       })
     }
   }

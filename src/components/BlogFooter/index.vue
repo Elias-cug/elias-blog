@@ -6,18 +6,18 @@
       <span>github</span>
     </div>
     <div class="approve">
-      Copyright © 2018-2020 燕十三 All Rights Reserved V.1.0.0 备案号:蜀ICP备18008600号
+      Copyright © 2018-2020 燕十三 All Rights Reserved V.1.0.0
+      备案号:蜀ICP备18008600号
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'BlogFooter'
 }
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .blog-footer {
   background-color: #212220;
   color: #919290;
@@ -29,14 +29,14 @@ export default {
   line-height: 20px;
   margin-top: 40px;
   overflow: hidden;
-  .link{
+  .link {
     text-align: center;
     margin-bottom: 20px;
-    span{
+    span {
       padding: 0 10px;
     }
   }
-  .approve{
+  .approve {
     text-align: center;
     margin-bottom: 10px;
   }

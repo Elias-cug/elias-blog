@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       tabPosition: 'developTime',
       developTime: [
@@ -47,7 +47,7 @@ export default {
     }
   },
   computed: {
-    timeLists: function() {
+    timeLists: function () {
       return this[this.tabPosition]
     }
   }
@@ -55,13 +55,13 @@ export default {
 </script>
 
 <style lang="scss" scope>
-.time-line{
+.time-line {
   background-color: #fff;
   width: 90%;
   margin: 20px auto;
   padding: 20px;
   min-height: 100vh;
-  .line-options{
+  .line-options {
     margin-bottom: 20px;
   }
 }

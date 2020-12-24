@@ -13,7 +13,7 @@
       </div>
       <div class="article-content">
         <span class="cover" @click="continueReading(list._id)">
-          <img :src="list.image_src">
+          <img :src="list.image_src" />
         </span>
         <p>{{ list.desc }}</p>
       </div>
@@ -48,33 +48,35 @@ import { findArticle } from '@/api/blog/article.js'
 export default {
   name: 'ArticleList',
   filters: {
-    parseTime(time, cFormat) {
+    parseTime (time, cFormat) {
       return parseTime(time, cFormat)
     }
   },
-  data() {
+  data () {
     return {
       lists: []
     }
   },
-  mounted() {
+  mounted () {
     this.findArticle()
   },
   methods: {
-    resolvePath(routePath) {
+    resolvePath (routePath) {
       return path.resolve(routePath)
     },
-    findArticle(options) {
+    findArticle (options) {
       return new Promise((resolve, reject) => {
-        findArticle({}).then((response) => {
-          this.lists = response
-          resolve()
-        }).catch(err => {
-          reject(err)
-        })
+        findArticle({})
+          .then(response => {
+            this.lists = response
+            resolve()
+          })
+          .catch(err => {
+            reject(err)
+          })
       })
     },
-    continueReading(id) {
+    continueReading (id) {
       const path = `/blog/index/${id}`
       if (this.$route.path !== path) this.$router.push(path)
     }
@@ -151,7 +153,7 @@ export default {
     min-height: 200px;
     line-height: 28px;
     p {
-      word-break:break-all
+      word-break: break-all;
     }
     .cover {
       display: block;
@@ -191,7 +193,7 @@ export default {
         color: aqua;
       }
       span:before {
-        content: " ";
+        content: ' ';
         display: inline-block;
         height: 1px;
         top: 20px;

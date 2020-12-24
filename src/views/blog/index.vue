@@ -20,7 +20,7 @@ export default {
     Category,
     HotSort
   },
-  data() {
+  data () {
     return {
       isDetail: false
     }

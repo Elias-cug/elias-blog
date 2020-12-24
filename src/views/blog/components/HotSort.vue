@@ -14,18 +14,22 @@
 <script>
 export default {
   name: 'HotSort',
-  data() {
+  data () {
     return {
-      hotList: [{
-        id: '01',
-        title: 'js学习'
-      }, {
-        id: '02',
-        title: 'js学习'
-      }, {
-        id: '03',
-        title: 'js学习'
-      }]
+      hotList: [
+        {
+          id: '01',
+          title: 'js学习'
+        },
+        {
+          id: '02',
+          title: 'js学习'
+        },
+        {
+          id: '03',
+          title: 'js学习'
+        }
+      ]
     }
   }
 }
@@ -74,7 +78,7 @@ export default {
       line-height: 22px;
       text-align: center;
       counter-increment: nums;
-      content: counter(nums,decimal);
+      content: counter(nums, decimal);
       position: absolute;
       left: 0;
       top: 10px;
